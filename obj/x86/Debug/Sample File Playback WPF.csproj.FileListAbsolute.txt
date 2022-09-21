@@ -1,0 +1,42 @@
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\bin\x86\Debug\Sample File Playback WPF.exe.config
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\bin\x86\Debug\Sample File Playback WPF.exe
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\bin\x86\Debug\Sample File Playback WPF.pdb
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\bin\x86\Debug\Interop.MFORMATSLib.dll
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF.csproj.AssemblyReference.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF.csproj.SuggestedBindingRedirects.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Interop.MFORMATSLib.dll
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF.csproj.ResolveComReference.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\App.baml
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\App.g.cs
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\View\View.g.cs
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF_MarkupCompile.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF_MarkupCompile.lref
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\View\View.baml
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF.g.resources
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\SampleFilePlaybackWPF.Properties.Resources.resources
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF.csproj.GenerateResource.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF.csproj.CoreCompileInputs.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF.exe
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\Sample File Playback WPF.pdb
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\bin\x86\Debug\Sample File Playback WPF.exe.config
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\bin\x86\Debug\Sample File Playback WPF.exe
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\bin\x86\Debug\Sample File Playback WPF.pdb
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\bin\x86\Debug\Interop.MFORMATSLib.dll
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF.csproj.AssemblyReference.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF.csproj.SuggestedBindingRedirects.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Interop.MFORMATSLib.dll
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF.csproj.ResolveComReference.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\App.baml
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\App.g.cs
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\View\View.g.cs
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF_MarkupCompile.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF_MarkupCompile.lref
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\View\View.baml
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF.g.resources
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\SampleFilePlaybackWPF.Properties.Resources.resources
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF.csproj.GenerateResource.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF.csproj.CoreCompileInputs.cache
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF.exe
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\Sample File Playback WPF.pdb

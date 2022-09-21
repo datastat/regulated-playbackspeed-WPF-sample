@@ -1,0 +1,25 @@
+﻿<Window x:Class="SampleFilePlaybackWPF.View.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModel="clr-namespace:SampleFilePlaybackWPF.ViewModel"
+        Title="Sample File Playback WPF" Height="350" Width="525">
+    <Window.DataContext>
+        <viewModel:ViewModel/>
+    </Window.DataContext>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Stretch="Fill" Fill="DeepSkyBlue"/>
+        <Image Grid.Row="0" Stretch="Fill" Source="{Binding PreviewSource}" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Width="75" Content="100" Command="{Binding SetPlaybackSpeed_100}"/>
+            <Button Width="75" Content="75" Command="{Binding SetPlaybackSpeed_75}"/>
+            <Button Width="75" Content="100" Command="{Binding SetPlaybackSpeed_50}"/>
+            <Button Width="75" Content="75" Command="{Binding SetPlaybackSpeed_25}"/>
+        </StackPanel>
+    </Grid>
+</Window>
