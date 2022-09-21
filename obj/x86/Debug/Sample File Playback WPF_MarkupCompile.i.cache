@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\obj\x86\Debug\
+C:\Users\Zan\Documents\GitHub\Sample File Playback WPF\regulated-playbackspeed\obj\x86\Debug\
 SampleFilePlaybackWPF
 none
 false
@@ -16,5 +16,5 @@ DEBUG;TRACE
 13182937020
 App.xaml;View\View.xaml;
 
-False
+True
 

@@ -50,7 +50,8 @@ namespace SampleFilePlaybackWPF.ViewModel
 
         private void SetPlaybackSpeed(double v)
         {
-            throw new NotImplementedException();
+            desiredPlaybackSpeed = v;
+            //readerParams = $"rate={Math.Abs(v).ToString().Replace(',', '.')}";
         }
         #endregion
 
@@ -83,6 +84,13 @@ namespace SampleFilePlaybackWPF.ViewModel
             }
         }
 
+        private string readerParams = "";
+
+        public double CurrentPlaybackSpeed { get; set; } = 1;
+        private double desiredPlaybackSpeed = 1;
+
+        private double tickValue = 0.015;
+
         private void WpfPreviewBody()
         {
             while (_isThreadWork)
@@ -90,7 +98,25 @@ namespace SampleFilePlaybackWPF.ViewModel
                 try
                 { 
                     MFFrame sourceFrame;
-                    _myReader.SourceFrameGet(-1, out sourceFrame, "");
+
+                    if (Math.Abs(CurrentPlaybackSpeed - desiredPlaybackSpeed) > tickValue)
+                    {
+                        if (CurrentPlaybackSpeed > desiredPlaybackSpeed)
+                        {
+                            CurrentPlaybackSpeed -= tickValue;
+                        }
+                        else
+                        {
+                            CurrentPlaybackSpeed += tickValue;
+                        }
+
+                        OnPropertyChanged(nameof(CurrentPlaybackSpeed));
+
+                        readerParams = $"rate={Math.Abs(CurrentPlaybackSpeed).ToString().Replace(',', '.')}";
+                    }
+
+                    _myReader.SourceFrameGet(-1, out sourceFrame, readerParams);
+
                     _myPreview.ReceiverFramePut(sourceFrame, -1, "");
                     Marshal.ReleaseComObject(sourceFrame);
                     _garbageCounter++;
@@ -109,7 +135,7 @@ namespace SampleFilePlaybackWPF.ViewModel
             try
             {
                 _myReader = new MFReaderClass();
-                _myReader.ReaderOpen(@"C:\tmp\BBB_50fps_12mbit_60s_snowflake.mp4", "loop=true");
+                _myReader.ReaderOpen(@"C:\FairReplayC\Exports\607-Short_event_at_14_18_11_796-Mat_2_F.mp4", "loop=true");
                 _myPreview = new MFPreviewClass();
                 _myPreview.PropsSet("wpf_preview", "true");
                 _myPreview.PreviewEnable("", 0, 1);

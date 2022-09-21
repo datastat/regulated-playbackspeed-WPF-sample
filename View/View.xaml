@@ -18,8 +18,11 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button Width="75" Content="100" Command="{Binding SetPlaybackSpeed_100}"/>
             <Button Width="75" Content="75" Command="{Binding SetPlaybackSpeed_75}"/>
-            <Button Width="75" Content="100" Command="{Binding SetPlaybackSpeed_50}"/>
-            <Button Width="75" Content="75" Command="{Binding SetPlaybackSpeed_25}"/>
+            <Button Width="75" Content="50" Command="{Binding SetPlaybackSpeed_50}"/>
+            <Button Width="75" Content="25" Command="{Binding SetPlaybackSpeed_25}"/>
+
+            <TextBlock  Text="{Binding CurrentPlaybackSpeed}"/>
+
         </StackPanel>
     </Grid>
 </Window>
