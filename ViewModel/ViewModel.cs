@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -29,7 +30,11 @@ namespace SampleFilePlaybackWPF.ViewModel
             set { _previewSource = value; }
         }
        
+        public ICommand SetPlaybackSpeed_200 { get; set; }
+        public ICommand SetPlaybackSpeed_150 { get; set; }
+        public ICommand SetPlaybackSpeed_125 { get; set; }
         public ICommand SetPlaybackSpeed_100 { get; set; }
+        public ICommand SetPlaybackSpeed_99 { get; set; }
         public ICommand SetPlaybackSpeed_75 { get; set; }
         public ICommand SetPlaybackSpeed_50 { get; set; }
         public ICommand SetPlaybackSpeed_25 { get; set; }
@@ -38,6 +43,9 @@ namespace SampleFilePlaybackWPF.ViewModel
         #region CONSTRUCTOR
         public ViewModel()
         {
+            SetPlaybackSpeed_200 = new RelayCommand(args => SetPlaybackSpeed(2));
+            SetPlaybackSpeed_150 = new RelayCommand(args => SetPlaybackSpeed(1.5));
+            SetPlaybackSpeed_125 = new RelayCommand(args => SetPlaybackSpeed(1.25));
             SetPlaybackSpeed_100 = new RelayCommand(args => SetPlaybackSpeed(1));
             SetPlaybackSpeed_75 = new RelayCommand(args => SetPlaybackSpeed(0.75));
             SetPlaybackSpeed_50 = new RelayCommand(args => SetPlaybackSpeed(0.5));
@@ -87,37 +95,79 @@ namespace SampleFilePlaybackWPF.ViewModel
         private string readerParams = "";
 
         public double CurrentPlaybackSpeed { get; set; } = 1;
+        public string CurrentPlaybackSpeedString { get; set; }
+        public int CurrentFrame { get; set; } = 0;
         private double desiredPlaybackSpeed = 1;
 
-        private double tickValue = 0.015;
+        private double tickValue = 0.025;
+
+        private bool getNextCalculatedFrame = false;
+
 
         private void WpfPreviewBody()
         {
             while (_isThreadWork)
             {
                 try
-                { 
+                {
                     MFFrame sourceFrame;
 
+                    // change playbackspeed
                     if (Math.Abs(CurrentPlaybackSpeed - desiredPlaybackSpeed) > tickValue)
                     {
                         if (CurrentPlaybackSpeed > desiredPlaybackSpeed)
                         {
-                            CurrentPlaybackSpeed -= tickValue;
+                            CurrentPlaybackSpeed = Math.Round(CurrentPlaybackSpeed - tickValue, 3);
                         }
                         else
                         {
-                            CurrentPlaybackSpeed += tickValue;
+                            CurrentPlaybackSpeed = Math.Round(CurrentPlaybackSpeed + tickValue, 3);
                         }
 
                         OnPropertyChanged(nameof(CurrentPlaybackSpeed));
 
-                        readerParams = $"rate={Math.Abs(CurrentPlaybackSpeed).ToString().Replace(',', '.')}";
+                        if (CurrentPlaybackSpeed != 1)
+                        {
+                            CurrentPlaybackSpeedString = $"rate={Math.Abs(CurrentPlaybackSpeed).ToString().Replace(',', '.')}";
+                        }
+                        else
+                        {
+                            CurrentPlaybackSpeedString = "";
+                            getNextCalculatedFrame = true;
+                        }
+
+                        OnPropertyChanged(nameof(CurrentPlaybackSpeedString));
                     }
 
-                    _myReader.SourceFrameGet(-1, out sourceFrame, readerParams);
+                    // get frame
+                    if (getNextCalculatedFrame)
+                    {
+                        _myReader.SourceFrameGetByNumber(CurrentFrame + 1, -1, out sourceFrame, "");
+                        getNextCalculatedFrame = false;
+                    }
+                    else
+                    {
+                        _myReader.SourceFrameGet(-1, out sourceFrame, CurrentPlaybackSpeedString);
+                    }
 
                     _myPreview.ReceiverFramePut(sourceFrame, -1, "");
+
+                    // get current frame
+                    sourceFrame.MFTimeGet(out M_TIME m_TIME);
+                    sourceFrame.MFAVPropsGet(out var props, out _);
+
+                    var changeFor = Math.Abs(CurrentFrame - m_TIME.tcFrame.nExtraCounter);
+
+                    if (changeFor > 1)
+                    {
+                        Debug.WriteLine($"{DateTime.UtcNow} Jumped {CurrentFrame - m_TIME.tcFrame.nExtraCounter}");
+                    }
+
+                    CurrentFrame = m_TIME.tcFrame.nExtraCounter;
+                    OnPropertyChanged(nameof(CurrentFrame));
+
+
+                    // clean up
                     Marshal.ReleaseComObject(sourceFrame);
                     _garbageCounter++;
                     if (_garbageCounter%10 == 0) 
@@ -135,10 +185,19 @@ namespace SampleFilePlaybackWPF.ViewModel
             try
             {
                 _myReader = new MFReaderClass();
+                //_myReader.ReaderOpen(@"C:\tmp\BBB_50fps_12mbit_10m_snowflake.mp4", "loop=true");
                 _myReader.ReaderOpen(@"C:\FairReplayC\Exports\607-Short_event_at_14_18_11_796-Mat_2_F.mp4", "loop=true");
+                _myReader.PropsSet("stat::frame_get", "true");
+
+
+
                 _myPreview = new MFPreviewClass();
                 _myPreview.PropsSet("wpf_preview", "true");
                 _myPreview.PreviewEnable("", 0, 1);
+
+                _myPreview.PropsSet("preview.drop_frames", "true");
+                _myPreview.PropsSet("rate_control", "true");
+
                 _myPreview.OnEventSafe += _myPreview_OnEventSafe;
             }
             catch (Exception ex)

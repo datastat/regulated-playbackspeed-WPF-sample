@@ -16,12 +16,17 @@
         <Image Grid.Row="0" Stretch="Fill" Source="{Binding PreviewSource}" />
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Width="75" Content="200" Command="{Binding SetPlaybackSpeed_200}"/>
+            <Button Width="75" Content="150" Command="{Binding SetPlaybackSpeed_150}"/>
+            <Button Width="75" Content="125" Command="{Binding SetPlaybackSpeed_125}"/>
             <Button Width="75" Content="100" Command="{Binding SetPlaybackSpeed_100}"/>
             <Button Width="75" Content="75" Command="{Binding SetPlaybackSpeed_75}"/>
             <Button Width="75" Content="50" Command="{Binding SetPlaybackSpeed_50}"/>
             <Button Width="75" Content="25" Command="{Binding SetPlaybackSpeed_25}"/>
 
-            <TextBlock  Text="{Binding CurrentPlaybackSpeed}"/>
+            <TextBlock  Text="{Binding CurrentPlaybackSpeedString}" Width="100"/>
+            <TextBlock  Text="{Binding CurrentPlaybackSpeed}" Width="50"/>
+            <TextBlock  Text="{Binding CurrentFrame}" Width="50"/>
 
         </StackPanel>
     </Grid>
